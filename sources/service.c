@@ -16,5 +16,10 @@ ScreenCreateResult create_screen(int width, int height){
 	if (height == 0) {
 		screen_create_result.error_code = ERROR_CODE_ZERO_HEIGHT;
 	}
+	if (height == 0) {
+		screen_create_result.error_code = ERROR_CODE_ZERO_WIDTH;
+	}
+
+
 	return screen_create_result;
 }
