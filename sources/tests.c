@@ -107,7 +107,19 @@ void should_return_error_code_negative_width_if_send_negative_width() {
 
 	test_end("should_return_error_code_negative_width_if_send_negative_width");
 }
+void should_return_error_code_zero_height_if_send_zero_heighth() {
+	test_start("should_return_error_code_zero_height_if_send_zero_heighth");
 
+	int width = 50;
+	int height = 0;
+
+	ScreenCreateResult screen_create_result = create_screen(width, height);
+
+	assert_equal(screen_create_result.error_code, ERROR_CODE_ZERO_HEIGHT, "error_code");
+
+
+	test_end("should_return_error_code_zero_height_if_send_zero_heighth");
+}
 
 void run_tests(){
 	should_print_zero();
@@ -115,6 +127,7 @@ void run_tests(){
 	should_return_screen();
 	should_return_error_code_negative_height_if_send_negative_height();
 	should_return_error_code_negative_width_if_send_negative_width();
+	should_return_error_code_zero_height_if_send_zero_heighth();
 }
 
 // Ввести слишком маленькие или слишком большие числа, дробные, отрицательные,
