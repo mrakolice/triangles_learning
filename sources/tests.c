@@ -18,7 +18,49 @@ void assert_equal(int fact, int expected, char* comment){
 		printf("Assert %s FAILED\n", comment);
 	}
 }
+void assert_greater(int fact, int expected, char* comment) {
+	if (fact > expected) {
+		printf("Assert %s PASSED\n", comment);
+	}
+	else {
+		printf("Assert %s FAILED\n", comment);
+	}
+}
 
+void assert_greater_or_equal(int fact, int expected, char* comment) {
+	if (fact >= expected) {
+		printf("Assert %s PASSED\n", comment);
+	}
+	else {
+		printf("Assert %s FAILED\n", comment);
+	}
+}
+void assert_lesser(int fact, int expected, char* comment) {
+	if (fact < expected) {
+		printf("Assert %s PASSED\n", comment);
+	}
+	else {
+		printf("Assert %s FAILED\n", comment);
+	}
+}
+
+void assert_lesser_or_equal(int fact, int expected, char* comment) {
+	if (fact <= expected) {
+		printf("Assert %s PASSED\n", comment);
+	}
+	else {
+		printf("Assert %s FAILED\n", comment);
+	}
+}
+
+void assert_not_equal(int fact, int expected, char* comment) {
+	if (fact != expected) {
+		printf("Assert %s PASSED\n", comment);
+	}
+	else {
+		printf("Assert %s FAILED\n", comment);
+	}
+}
 
 void should_print_zero(){
 	int a = 0;
