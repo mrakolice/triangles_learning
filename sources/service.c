@@ -1,25 +1,22 @@
 
 #include "service.h"
 
-ScreenCreateResult create_screen(int width, int height){
-	ScreenCreateResult screen_create_result;
-	
-	screen_create_result.result.width = width;
-	screen_create_result.result.height = height;
 
-	if (height < 0){
-		screen_create_result.error_code = ERROR_CODE_NEGATIVE_HEIGHT;
-	}
-	if (width < 0) {
-		screen_create_result.error_code = ERROR_CODE_NEGATIVE_WIDTH;
-	}
-	if (height == 0) {
-		screen_create_result.error_code = ERROR_CODE_ZERO_HEIGHT;
-	}
-	if (height == 0) {
-		screen_create_result.error_code = ERROR_CODE_ZERO_WIDTH;
-	}
+// Провести одну итерацию	
+Triangle* calculate_one_iteration(Triangle* triangles, double curve_coefficient){
+	// Создаем результирующий массив треугольников, по величине в 3 раза больший, чем исходный
+	// Бежим по каждому треугольнику и для него создаем три новых по треубемой формуле
+	// Возвращаем результирующий массив треугольников
+	return 0;
+}
 
 
-	return screen_create_result;
+
+// Провести все итерации
+Triangle* calculate_all(Screen screen, int iteration_count, double curve_coefficient){
+	// Создать экран по введенной пользователем ширине и длине
+	// Создать треугольник базовый
+	// Проводить итерации пока не закончится количество итераций
+	// Отрисовать треугольники (вывести координаты)
+	return 0;
 }
