@@ -1,7 +1,7 @@
 #include "entities.h"
 #include "math.h"
 
-int point_equal(Point point1, Point point2){
+int point_equal(Point start_point, Point end_point){
 	return abs(start_point.x - end_point.x) <= EPSILON && abs(start_point.y - end_point.y) <= EPSILON;
 }
 
@@ -36,7 +36,17 @@ ScreenCreateResult create_screen(int width, int height){
 PointCreateResult create_point(double x, double y, Screen screen){
 	PointCreateResult point_create_result;
 
-	// точка за границами экрана (0;0) - (width; height)
+	// точка за границами экрана - (width; height)
+	if (x > screen) {
+		point_create_result.error_code = ERROR_CODE_X_MORE_THEN_SCREEN;
+		return point_create_result;
+	}
+	if (y > screen) {
+		point_create_result.error_code = ERROR_CODE_Y_MORE_THEN_SCREEN;
+		return point_create_result;
+	}
+	point_create_result.result.x = x;
+	point_create_result.result.y = y;
 
 	return point_create_result;
 }
@@ -59,12 +69,12 @@ EdgeCreateResult create_edge(Point start_point, Point end_point){
 }
 
 // Создать треугольник
-TriangleCreateResult create_triangle(Point points[3]){
+TriangleCreateResult create_triangle_from_points(Point points[3]){
 	TriangleCreateResult triangle_create_result;
 
-	// Координаты точек совпадают (start_point.x == end_point.x) и тд	
+	// Координаты точек совпадают (start_point.x == end_point.x) и тд
 	for (int i=0,j=2; i < 3; j=i++){
-		if (point_equal(point[i], point[j])){
+		if (point_equal(points[i], points[j])){
 			triangle_create_result.error_code = ERROR_CODE_POINTS_ARE_EQUAL;
 			return triangle_create_result;
 		}
@@ -77,10 +87,15 @@ TriangleCreateResult create_triangle(Point points[3]){
 }
 
 // Создать треугольник
-TriangleCreateResult create_triangle(Edge edges[3]){
+TriangleCreateResult create_triangle_from_edges(Edge edges[3]){
 	TriangleCreateResult triangle_create_result;
 
 	// Координаты точек совпадают (start_point.x == end_point.x) и тд
-
-	return triangle_create_result;	
+	for (int i = 0, j = 2; i < 3; j = i++) {
+		if (point_equal(edges[i], edges[j])) {
+			triangle_create_result.error_code = ERROR_CODE_EDGES_ARE_EQUAL;
+			return triangle_create_result;
+		}
+	}
+	return triangle_create_result;
 }

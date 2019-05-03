@@ -134,6 +134,19 @@ void should_return_error_code_zero_width_if_send_zero_width() {
 
 	test_end("should_return_error_code_zero_width_if_send_zero_width");
 }
+void should_return_error_cob() {
+	test_start("should_return_error_cob");
+
+	double x = 500;
+	double y = 400;
+	int width = 0;
+	int height = 0;
+
+
+
+	PointCreateResult point_create_result = create_point(double x, double y, Screen screen);
+
+}
 
 void run_tests(){
 	should_print_zero();
